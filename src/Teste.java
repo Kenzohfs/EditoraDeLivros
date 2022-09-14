@@ -26,7 +26,7 @@ public class Teste {
 //        teste(livro.getAutor());
 
         LivrosController controller = new LivrosController();
-        System.out.println(controller.buscarLista(1));
+//        System.out.println(controller.cadastrar());
     }
 
     public static void teste(Object o) {
