@@ -4,7 +4,7 @@ public enum Status {
     AGUARDANDO_REVISAO("Aguardando revisão"),
     EM_REVISAO("Em Revisão"),
     REPROVADO("Reprovado"),
-    AGUARDADNDO_EDICAO("Aguardando edição"),
+    AGUARDANDO_EDICAO("Aguardando edição"),
     APROVADO("Aprovado"),
     PUBLICADO("Publicado");
 

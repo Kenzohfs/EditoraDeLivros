@@ -5,6 +5,7 @@ import br.senai.sc.livros.model.entities.Livros;
 import br.senai.sc.livros.model.entities.Pessoa;
 import br.senai.sc.livros.model.entities.Status;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -12,28 +13,58 @@ public class LivrosService {
     LivrosDAO acesso = new LivrosDAO();
 
     public void inserir(Livros livro) {
-        acesso.inserir(livro);
+        try {
+            acesso.inserir(livro);
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
     }
 
-    public Collection<Livros> selecionarTodos() { return acesso.selecionarTodos(); }
+    public Collection<Livros> selecionarTodos() {
+        try {
+            return acesso.selecionarTodos();
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
+    }
 
     public Livros selecionar(int isbn) {
-        return acesso.selecionar(isbn);
+        try {
+            return acesso.selecionar(isbn);
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
     }
 
     public void atualizar(int isbn, Livros livroAtualizado) {
-        acesso.atualizar(isbn, livroAtualizado);
+        try {
+            acesso.atualizar(isbn, livroAtualizado);
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
     }
 
     public Collection<Livros> selecionarPorAutor(Pessoa pessoa) {
-        return acesso.selecionarPorAutor(pessoa);
+        try {
+            return acesso.selecionarPorAutor(pessoa);
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
     }
 
     public Collection<Livros> selecionarAtividadesAutor(Pessoa pessoa) {
-        return acesso.selecionarAtividadesAutor(pessoa);
+        try {
+            return acesso.selecionarAtividadesAutor(pessoa);
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
     }
 
     public Collection<Livros> selecionarPorStatus(Status status) {
-        return acesso.selecionarPorStatus(status);
+        try {
+            return acesso.selecionarPorStatus(status);
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
     }
 }

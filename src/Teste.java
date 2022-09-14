@@ -1,3 +1,4 @@
+import br.senai.sc.livros.controller.LivrosController;
 import br.senai.sc.livros.model.dao.LivrosDAO;
 import br.senai.sc.livros.model.entities.Autor;
 import br.senai.sc.livros.model.entities.Genero;
@@ -9,13 +10,23 @@ import java.util.HashSet;
 
 public class Teste {
     public static void main(String[] args) {
-        LivrosDAO dao = new LivrosDAO();
-        Collection<Livros> livros = new HashSet<>(dao.selecionarTodos());
-        Livros livro = new Livros("String titulo", 120, 80, new Autor("String nome", "String sobrenome", "String email", "String cpf", Genero.FEMININO, "String senha"), Status.AGUARDADNDO_EDICAO);
-        livros.add(livro);
-        teste(livro.getTitulo());
-        teste(livro.getIsbn());
-        teste(livro.getAutor());
+//        LivrosDAO dao = new LivrosDAO();
+//        Collection<Livros> livrosDao = null;
+//        try {
+//            livrosDao = dao.selecionarTodos();
+//        } catch (Exception exception) {
+//            throw new RuntimeException(exception);
+//        }
+//
+//        Collection<Livros> livros = new HashSet<>(livrosDao);
+//        Livros livro = new Livros("String titulo", 120, 80, new Autor("String nome", "String sobrenome", "String email", "String cpf", Genero.FEMININO, "String senha"), Status.AGUARDANDO_EDICAO);
+//        livros.add(livro);
+//        teste(livro.getTitulo());
+//        teste(livro.getIsbn());
+//        teste(livro.getAutor());
+
+        LivrosController controller = new LivrosController();
+        System.out.println(controller.buscarLista(1));
     }
 
     public static void teste(Object o) {

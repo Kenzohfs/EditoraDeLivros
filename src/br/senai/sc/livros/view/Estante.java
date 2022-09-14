@@ -65,7 +65,7 @@ public class Estante extends JFrame {
                                 livrosController.editarLivro(isbn, Status.REPROVADO);
                                 break;
                             case 2:
-                                livrosController.editarLivro(isbn, Status.AGUARDADNDO_EDICAO);
+                                livrosController.editarLivro(isbn, Status.AGUARDANDO_EDICAO);
                                 break;
                         }
                     }
@@ -97,7 +97,7 @@ public class Estante extends JFrame {
                             livrosController.editarLivro(isbn, Status.REPROVADO);
                             break;
                         case 2:
-                            livrosController.editarLivro(isbn, Status.AGUARDADNDO_EDICAO);
+                            livrosController.editarLivro(isbn, Status.AGUARDANDO_EDICAO);
                             break;
                     }
                 }

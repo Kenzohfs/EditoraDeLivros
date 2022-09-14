@@ -11,6 +11,12 @@ public class EditoraController {
     public ArrayList<Editora> buscarLista() {
         EditoraService service = new EditoraService();
 
-        return service.getListaEditora();
+        try {
+            return service.getListaEditora();
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
+
+        return null;
     }
 }

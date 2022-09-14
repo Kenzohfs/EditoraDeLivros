@@ -33,16 +33,16 @@ public abstract class Pessoa {
         return senha;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
     public Genero getGenero() {
         return genero;
     }
 
     public void setGenero(Genero genero) {
         this.genero = genero;
+    }
+
+    public String getCpf() {
+        return cpf;
     }
 
     public Pessoa validaLogin(String senha) {
