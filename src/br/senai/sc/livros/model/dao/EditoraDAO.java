@@ -26,7 +26,7 @@ public class EditoraDAO {
 
     public ArrayList<Editora> getListaEditora() throws SQLException {
         ArrayList<Editora> contatoCollection = new ArrayList<>();
-        String sql = "select * from contatos";
+        String sql = "select * from editora";
 
         Conexao conexao = new Conexao();
 

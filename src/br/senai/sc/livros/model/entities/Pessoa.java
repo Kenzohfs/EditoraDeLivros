@@ -77,4 +77,16 @@ public abstract class Pessoa {
     public int hashCode() {
         return cpf.charAt(0);
     }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", genero=" + genero +
+                '}';
+    }
 }

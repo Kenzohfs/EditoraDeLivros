@@ -72,8 +72,8 @@ public class LivrosDAO {
 //    }
 
     public void inserir(Livros livro) throws SQLException {
-        String sql = "insert into livro(isbn, titulo, qtdPaginas, pessoa_cpf) values (?, ?, ?, ?)";
-
+        String sql = "insert into livro (isbn, titulo, qtdPaginas, status, pessoa_cpf) values (?, ?, ?, ?, ?)";
+        String cpf = livro.getAutor().getCpf();
         Conexao conexao = new Conexao();
 
         Connection connection = conexao.conectaBD();
@@ -82,7 +82,8 @@ public class LivrosDAO {
         statement.setInt(1, livro.getIsbn());
         statement.setString(2, livro.getTitulo());
         statement.setInt(3, livro.getQtdPag());
-        statement.setString(4, livro.getAutor().getCpf());
+        statement.setString(4, livro.getStatus().toString());
+        statement.setString(5, cpf);
         statement.execute();
 
         connection.close();
@@ -229,7 +230,12 @@ public class LivrosDAO {
     }
 
     public void atualizar(int isbn, Livros livroAtualizado) throws SQLException {
-        String sql = "update livro set isbn = ?, titulo = ?, qtdPaginas = ?, status = ?, pessoa_cpf = ? where isbn = ?";
+        String sql = "";
+        if (livroAtualizado.getEditora() == null) {
+            sql = "update livro set isbn = ?, titulo = ?, qtdPaginas = ?, status = ?, pessoa_cpf = ? where isbn = ?";
+        } else {
+            sql = "update livro set isbn = ?, titulo = ?, qtdPaginas = ?, status = ?, pessoa_cpf = ?, editora_id = ? where isbn = ?";
+        }
 
         Conexao conexao = new Conexao();
 
@@ -239,8 +245,14 @@ public class LivrosDAO {
         statement.setInt(1, livroAtualizado.getIsbn());
         statement.setString(2, livroAtualizado.getTitulo());
         statement.setInt(3, livroAtualizado.getQtdPag());
-        statement.setString(4, livroAtualizado.getAutor().getCpf());
-        statement.setInt(5, isbn);
+        statement.setString(4, livroAtualizado.getStatus().toString());
+        statement.setString(5, livroAtualizado.getAutor().getCpf());
+        if (livroAtualizado.getEditora() != null) {
+            statement.setInt(6, getEditoraID(livroAtualizado.getEditora().getNome()));
+            statement.setInt(7, isbn);
+        } else {
+            statement.setInt(6, isbn);
+        }
         statement.execute();
 
         connection.close();
@@ -273,5 +285,24 @@ public class LivrosDAO {
         }
         connection.close();
         throw new RuntimeException("Deu ruim!");
+    }
+
+    public Integer getEditoraID(String editoraNome) throws SQLException {
+        String sql = "select * from editora where nome = ? limit 1";
+
+        Conexao conexao = new Conexao();
+
+        Connection connection = conexao.conectaBD();
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, editoraNome);
+        ResultSet resultSet = statement.executeQuery();
+
+        if (resultSet != null) {
+            if (resultSet.next()) {
+                return resultSet.getInt("id");
+            }
+        }
+        throw new RuntimeException("Editora não encontrada!");
     }
 }

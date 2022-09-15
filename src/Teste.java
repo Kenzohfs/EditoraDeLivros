@@ -1,12 +1,10 @@
+import br.senai.sc.livros.controller.EditoraController;
 import br.senai.sc.livros.controller.LivrosController;
-import br.senai.sc.livros.model.dao.LivrosDAO;
+import br.senai.sc.livros.controller.PessoaController;
 import br.senai.sc.livros.model.entities.Autor;
+import br.senai.sc.livros.model.entities.Editora;
 import br.senai.sc.livros.model.entities.Genero;
-import br.senai.sc.livros.model.entities.Livros;
 import br.senai.sc.livros.model.entities.Status;
-
-import java.util.Collection;
-import java.util.HashSet;
 
 public class Teste {
     public static void main(String[] args) {
@@ -25,8 +23,9 @@ public class Teste {
 //        teste(livro.getIsbn());
 //        teste(livro.getAutor());
 
-        LivrosController controller = new LivrosController();
-//        System.out.println(controller.cadastrar());
+        LivrosController controllerLivro = new LivrosController();
+        EditoraController controllerEditora = new EditoraController();
+        PessoaController controllerPessoa = new PessoaController();
     }
 
     public static void teste(Object o) {

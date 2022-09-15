@@ -12,6 +12,7 @@ public class LivrosController {
     public void cadastrar(String titulo, Pessoa pessoa, String isbn, String qtdPaginas) {
         Livros livro;
         livro = Livros.cadastrar(titulo, Integer.parseInt(isbn), Integer.parseInt(qtdPaginas), (Autor) pessoa);
+
         LivrosService service = new LivrosService();
         service.inserir(livro);
     }

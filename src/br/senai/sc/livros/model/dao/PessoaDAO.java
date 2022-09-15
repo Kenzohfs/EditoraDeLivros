@@ -31,7 +31,7 @@ public class PessoaDAO {
 //    }
 
     public void inserir(Pessoa pessoa) throws SQLException {
-        String sql = "insert into pessoa(cpf, nome, sobrenome, email, senha, genero, funcao) values (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into pessoa (cpf, nome, sobrenome, email, senha, genero, funcao) values (?, ?, ?, ?, ?, ?, ?)";
 
         Conexao conexao = new Conexao();
 
@@ -73,6 +73,7 @@ public class PessoaDAO {
                         resultSet.getString("senha")
                 ) {
                 };
+                connection.close();
                 return pessoa;
             }
         }
