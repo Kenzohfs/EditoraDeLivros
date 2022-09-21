@@ -10,11 +10,11 @@ public class LivrosController {
     Livros model;
 
     public void cadastrar(String titulo, Pessoa pessoa, String isbn, String qtdPaginas) {
-        Livros livro;
-        livro = Livros.cadastrar(titulo, Integer.parseInt(isbn), Integer.parseInt(qtdPaginas), (Autor) pessoa);
+//        Autor autor = (Autor) pessoa;
+        model = Livros.cadastrar(titulo, Integer.parseInt(isbn), Integer.parseInt(qtdPaginas), (Autor) pessoa);
 
         LivrosService service = new LivrosService();
-        service.inserir(livro);
+        service.inserir(model);
     }
 
     public Collection<Livros> buscarLista(int lista) {

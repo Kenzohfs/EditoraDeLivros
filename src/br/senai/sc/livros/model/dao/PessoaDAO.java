@@ -64,15 +64,34 @@ public class PessoaDAO {
         Pessoa pessoa;
         if (resultSet != null) {
             if (resultSet.next()) {
-                pessoa = new Pessoa(
-                        resultSet.getString("nome"),
-                        resultSet.getString("sobrenome"),
-                        resultSet.getString("email"),
-                        resultSet.getString("cpf"),
-                        Genero.valueOf(resultSet.getString("genero")),
-                        resultSet.getString("senha")
-                ) {
-                };
+                if (resultSet.getString("funcao").equals("AUTOR")) {
+                    pessoa = new Autor(
+                            resultSet.getString("nome"),
+                            resultSet.getString("sobrenome"),
+                            resultSet.getString("email"),
+                            resultSet.getString("cpf"),
+                            Genero.valueOf(resultSet.getString("genero")),
+                            resultSet.getString("senha")
+                    );
+                } else if (resultSet.getString("funcao").equals("REVISOR")) {
+                    pessoa = new Revisor(
+                            resultSet.getString("nome"),
+                            resultSet.getString("sobrenome"),
+                            resultSet.getString("email"),
+                            resultSet.getString("cpf"),
+                            Genero.valueOf(resultSet.getString("genero")),
+                            resultSet.getString("senha")
+                    );
+                } else {
+                    pessoa = new Diretor(
+                            resultSet.getString("nome"),
+                            resultSet.getString("sobrenome"),
+                            resultSet.getString("email"),
+                            resultSet.getString("cpf"),
+                            Genero.valueOf(resultSet.getString("genero")),
+                            resultSet.getString("senha")
+                    );
+                }
                 connection.close();
                 return pessoa;
             }
